@@ -1,5 +1,6 @@
 package com.elibrary.library.api;
 
+import com.elibrary.library.payload.StandardResponse;
 import com.elibrary.library.service.custom.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.apache.coyote.Response;
@@ -15,11 +16,36 @@ public class AuthorController {
     private final AuthorService authorService;
 
     @GetMapping("/all")
-    public ResponseEntity getAllAuthors() {
+    public ResponseEntity<StandardResponse> getAllAuthors() {
         try {
-            return ResponseEntity.ok(authorService.getAll());
-        } catch (Exception e) {
-            return ResponseEntity.status(500).body(e.getMessage());
+            return ResponseEntity.ok(
+                    StandardResponse.builder()
+                            .code(200)
+                            .message("Success")
+                            .data(authorService.getAll()).build());
+           } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                    StandardResponse.builder()
+                            .code(500)
+                            .message(e.getMessage()).build());
         }
     }
+
+    @GetMapping("/existsById")
+    public ResponseEntity<StandardResponse> existsById(String id) {
+        try {
+            return ResponseEntity.ok(
+                    StandardResponse.builder()
+                            .code(200)
+                            .message("Success")
+                            .data(authorService.existsById(id)).build());
+
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(
+                    StandardResponse.builder()
+                            .code(500)
+                            .message(e.getMessage()).build());
+        }
+    }
+
 }
