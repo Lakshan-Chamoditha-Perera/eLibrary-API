@@ -1,6 +1,8 @@
-FROM ubuntu:latest
-LABEL authors="shan"
-VOLUME /tmp
-COPY target/*.jar app.jar
-ENTRYPOINT ["java","-jar","/app.jar"]
+FROM maven:4.0.0-openjdk-17 AS build
+COPY . .
+RUN mvn clean package -DskipTests
+
+FROM openjdk:17.0.1-jdk-slim
+COPY --from=build /target/*.jar eLibrary-1.0.0.jar
 EXPOSE 8080
+ENTRYPOINT ["java","-jar","eLibrary-1.0.0.jar"]
