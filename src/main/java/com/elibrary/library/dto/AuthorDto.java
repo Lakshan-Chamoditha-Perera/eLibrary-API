@@ -2,13 +2,17 @@ package com.elibrary.library.dto;
 
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.sql.Date;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class AuthorDto implements SuperDto {
     @NotNull(message = "Author ID cannot be null")
     @Pattern(regexp = "A\\d{3}", message = "Author ID should start with A and have 3 digits")
@@ -26,6 +30,5 @@ public class AuthorDto implements SuperDto {
     @Pattern(regexp = "[A-Za-z0-9 .,]+", message = "Biography should only contain alphabetic characters, numbers, spaces, commas and periods")
     private String biography;
     @NotNull(message = "Date of birth cannot be null")
-    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "Date of birth should be in the format of YYYY-MM-DD")
     private Date dateOfBirth;
 }

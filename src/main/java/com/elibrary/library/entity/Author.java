@@ -5,6 +5,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import lombok.*;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +21,7 @@ public class Author {
     private String lastName;
     private String email;
     private String biography;
-    private Integer birthYear;
+    private Date dateOfBirth;
     @OneToMany(mappedBy = "author")
     @ToString.Exclude
     private List<Book> writtenBooks = new ArrayList<>();

@@ -1,6 +1,5 @@
 package com.elibrary.library.api;
 
-import com.elibrary.library.dto.AuthorDto;
 import com.elibrary.library.dto.BookDto;
 import com.elibrary.library.payload.StandardResponse;
 import com.elibrary.library.service.custom.BookService;
@@ -86,7 +85,7 @@ public class BookController {
         }
     }
 
-    @PatchMapping
+    @PatchMapping("/update")
     public ResponseEntity<StandardResponse> update(@Valid @RequestBody BookDto dto, BindingResult bindingResult) {
         try {
             if (bindingResult.hasErrors()) {
@@ -108,7 +107,7 @@ public class BookController {
         }
     }
 
-    @DeleteMapping
+    @DeleteMapping("/delete")
     public ResponseEntity<StandardResponse> delete(@RequestParam String isbn) {
         try {
             return ResponseEntity.ok(
