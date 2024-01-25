@@ -8,5 +8,3 @@
 /dataSources.local.xml
 
 .idea
-target
-src/main/resources/application.properties
