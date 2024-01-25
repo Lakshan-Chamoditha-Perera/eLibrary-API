@@ -25,7 +25,7 @@ public class AuthorDto implements SuperDto {
     @NotNull(message = "Biography cannot be null")
     @Pattern(regexp = "[A-Za-z0-9 .,]+", message = "Biography should only contain alphabetic characters, numbers, spaces, commas and periods")
     private String biography;
-    @NotNull(message = "Birth year cannot be null")
-    @Pattern(regexp = "\\d{4}", message = "Birth year should have 4 digits")
+    @NotNull(message = "Date of birth cannot be null")
+    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "Date of birth should be in the format of YYYY-MM-DD")
     private Date dateOfBirth;
 }
