@@ -1,5 +1,6 @@
 package com.elibrary.library.service.custom.impl;
 
+import com.elibrary.library.dto.BookDto;
 import com.elibrary.library.entity.Book;
 import com.elibrary.library.service.custom.BookService;
 import org.springframework.stereotype.Service;
@@ -11,12 +12,12 @@ import java.util.List;
 @Transactional
 public class BookServiceImpl implements BookService {
     @Override
-    public Boolean save(Book dto) {
+    public Boolean save(BookDto dto) {
         return null;
     }
 
     @Override
-    public Boolean update(Book dto) {
+    public Boolean update(BookDto dto) {
         return null;
     }
 
@@ -26,12 +27,12 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book get(String id) {
+    public BookDto get(String id) {
         return null;
     }
 
     @Override
-    public List<Book> getAll() {
+    public List<BookDto> getAll() {
         return null;
     }
 
