@@ -20,7 +20,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Boolean save(AuthorDto dto) throws RuntimeException {
-        if (authorRepository.existsById(dto.getId())) {
+        if (authorRepository.existsAuthorById(dto.getId())) {
             throw new RuntimeException("Author Already Exist");
         }
         authorRepository.save(mapper.map(dto, Author.class));
@@ -29,7 +29,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Boolean update(AuthorDto dto) {
-        if (!authorRepository.existsById(dto.getId())) {
+        if (!authorRepository.existsAuthorById(dto.getId())) {
             throw new RuntimeException("No Author for Update!");
         }
         authorRepository.save(mapper.map(dto, Author.class));
@@ -38,7 +38,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Boolean delete(String id) {
-        if (!authorRepository.existsById(id)) {
+        if (!authorRepository.existsAuthorById(id)) {
             throw new RuntimeException("No Author for Delete!");
         }
         authorRepository.deleteById(id);
@@ -47,7 +47,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public AuthorDto get(String id) {
-        if (!authorRepository.existsById(id)) {
+        if (!authorRepository.existsAuthorById(id)) {
             throw new RuntimeException("No Author for Delete!");
         }
         return mapper.map(authorRepository.findById(id).get(), AuthorDto.class);
@@ -63,6 +63,6 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Boolean existsById(String id) {
-        return authorRepository.existsById(id);
+        return authorRepository.existsAuthorById(id);
     }
 }

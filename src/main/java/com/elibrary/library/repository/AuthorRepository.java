@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 @EnableJpaRepositories
 public interface AuthorRepository extends JpaRepository<Author, String> {
+    Boolean existsAuthorById(String id);
 }
